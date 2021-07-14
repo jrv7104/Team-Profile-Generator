@@ -11,5 +11,15 @@ const Intern = require(./lib/Intern.test.js);
 //setup function to write data to html
 
 //create inquire questions
+inquirer.prompt(
+    [
+        {
+            type: 'input',
+            message: 'What is your name?'
+            name: 'name',
+        },
+        {
+            type: 'input',
+    ]
 
 //take answers and write to html
