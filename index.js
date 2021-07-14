@@ -85,6 +85,9 @@ function mainMenu(){
         if(answer.choice == "Engineer") {
             //run engineer inquirer prompts
         }
+        if else (answer.choice == "Intern") {
+            //run intern inquirer prompts
+        }
         else{
             createHTML()
         }
