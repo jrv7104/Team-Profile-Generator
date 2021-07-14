@@ -88,7 +88,8 @@ function mainMenu(){
                     const engineer = new Engineer(answers.name, answers.ID, answers.email, answers.Github)
                     console.log(engineer)
                     employeeArr.push(engineer)
-        else if (answer.choice == "Intern") {
+                })
+                if(answer.choice == "Intern") {
             //run intern inquirer prompts
             inquirer.prompt(
                 [
@@ -117,15 +118,15 @@ function mainMenu(){
                     const intern = new Intern(answers.name, answers.ID, answers.email, answers.school)
                     console.log(school)
                     employeeArr.push(school)
-        }
-        else{
+        })
+        {
             createHTML()
         }
-    })
+    }
 }
 
 function createHTML() {
-    let syntax =`
+    let syntax = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -136,10 +137,24 @@ function createHTML() {
     </head>
     <body>`
 
-    for(i=0; i<employeeArr.length; i++){
+    for(i=0; i<employeeArr.length; i++)
         if(employeeArr[i].getRole() == "Manager") {
             syntax += `
             <h2>Manager: ${employeeArr[i].name}</h2>`
+        }
+    }
+
+    for(i=0; i<employeeArr.length; i++)
+        if(employeeArr[i].getRole() == "Engineer") {
+            syntax += `
+            <h2>Engineer: ${employeeArr[i].name}</h2>`
+        }
+    })
+
+    for(i=0; i<employeeArr.length; i++) {
+        if(employeeArr[i].getRole() == "Intern") {
+            syntax += `
+            <h2>Intern: ${employeeArr[i].name}</h2>`
         }
     }
 
@@ -147,7 +162,7 @@ function createHTML() {
     </body>
 </html>`
 
-    fs.writeFileSync('test.html' , syntax)
+    fs.writeFileSync('test.html', syntax)
 }
 //create writeToFile function
 function writeToFile(filename, data) {
@@ -158,7 +173,9 @@ function writeToFile(filename, data) {
 };
 
 //Create function to initalize app
-function init() {}
+function init() {
+
+}
 
 //Function call to initialize app
-init();
+init()
