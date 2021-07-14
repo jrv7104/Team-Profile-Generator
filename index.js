@@ -15,11 +15,48 @@ inquirer.prompt(
     [
         {
             type: 'input',
-            message: 'What is your name?'
+            message: 'What is your name?',
             name: 'name',
         },
         {
             type: 'input',
+            message: 'What is your ID number?',
+            name: 'ID',
+        },
+        {
+            type: 'input',
+            message: 'What is your email?',
+            name: 'email',
+        },
+        {
+            type: 'input',
+            message: 'What is your role?',
+            name: 'role',
+        },
+        {
+            type: 'input',
+            message: 'What is your office number?',
+            name: 'office',
+        },
+        {
+            type: 'input',
+            message: 'What is your GitHub username?'
+            name: 'GitHub',
+        },
+        {
+            type: 'input',
+            message: 'What school do you attend?',
+            name: 'school',
+        },
     ]
-
+).then((answers) => {
+    const data = `# ${title}`
+    * [Name]
+    * [ID]
+    * [Email]
+    * [Role]
+    * [Office]
+    * [GitHub]
+    * [School]
 //take answers and write to html
+writeToFile(index.html, data
