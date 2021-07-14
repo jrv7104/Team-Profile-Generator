@@ -30,36 +30,13 @@ inquirer.prompt(
             message: 'What is your email?',
             name: 'email',
         },
-        // {
-        //     type: 'input',
-        //     message: 'What is your role?',
-        //     name: 'role',
-        // },
         {
             type: 'input',
             message: 'What is your office number?',
             name: 'office',
         },
-        // {
-        //     type: 'input',
-        //     message: 'What is your GitHub username?',
-        //     name: 'Github',
-        // },
-        // {
-        //     type: 'input',
-        //     message: 'What school do you attend?',
-        //     name: 'school',
-        // },
     ]
 ).then((answers) => {
-    // const data = `# ${title}`
-    // * [Name]
-    // * [ID]
-    // * [Email]
-    // * [Role]
-    // * [Office]
-    // * [GitHub]
-    // * [School]
     const manager = new Manager(answers.name, answers.ID, answers.email, answers.office)
     console.log(manager)
     employeeArr.push(manager)
@@ -84,9 +61,62 @@ function mainMenu(){
     ]).then(answer => {
         if(answer.choice == "Engineer") {
             //run engineer inquirer prompts
-        }
-        if else (answer.choice == "Intern") {
+            inquirer.prompt(
+                [
+                    {
+                        type: 'input',
+                        message: 'What is your name?',
+                        name: 'name',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What is your ID number?',
+                        name: 'ID',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What is your email?',
+                        name: 'email',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What is your GitHub username?',
+                        name: 'Github',
+                    },
+                ]
+                ).then((answers) => {
+                    const engineer = new Engineer(answers.name, answers.ID, answers.email, answers.Github)
+                    console.log(engineer)
+                    employeeArr.push(engineer)
+        else if (answer.choice == "Intern") {
             //run intern inquirer prompts
+            inquirer.prompt(
+                [
+                    {
+                        type: 'input',
+                        message: 'What is your name?',
+                        name: 'name',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What is your ID number?',
+                        name: 'ID',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What is your email?',
+                        name: 'email',
+                    },
+                    {
+                        type: 'input',
+                        message: 'What school do you attend?',
+                        name: 'school',
+                    },
+                ]
+                ).then((answers) => {
+                    const intern = new Intern(answers.name, answers.ID, answers.email, answers.school)
+                    console.log(school)
+                    employeeArr.push(school)
         }
         else{
             createHTML()
@@ -102,7 +132,7 @@ function createHTML() {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Team Profile Generator</title>
     </head>
     <body>`
 
