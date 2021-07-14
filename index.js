@@ -59,4 +59,22 @@ inquirer.prompt(
     * [GitHub]
     * [School]
 //take answers and write to html
-writeToFile(index.html, data
+writeToFile(fileName, data);
+console.log(answers)
+writeToFile("index.html", answers)
+}
+);
+
+//create writeToFile function
+function writeToFile(filename, data) {
+    let string = generateMarkdown(data)
+    false.writeFileSync(filename, string, err => {
+        if(err throw err;
+        })
+};
+
+//Create function to initalize app
+function init() {}
+
+//Function call to initialize app
+init();
