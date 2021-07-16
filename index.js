@@ -88,9 +88,10 @@ function mainMenu(){
                     const engineer = new Engineer(answers.name, answers.ID, answers.email, answers.Github)
                     console.log(engineer)
                     employeeArr.push(engineer)
+                    return mainMenu()
                 })
             }
-                if(answer.choice == "Intern") {
+                else if(answer.choice == "Intern") {
             //run intern inquirer prompts
             inquirer.prompt(
                 [
@@ -119,6 +120,7 @@ function mainMenu(){
                     const intern = new Intern(answers.name, answers.ID, answers.email, answers.school)
                     console.log(intern)
                     employeeArr.push(intern)
+                    return mainMenu()
         })
         if(answer.choice == "I am done"){
             createHTML()
