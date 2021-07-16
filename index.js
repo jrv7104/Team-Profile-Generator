@@ -143,14 +143,20 @@ function createHTML() {
     for(i=0; i<employeeArr.length; i++)
         if(employeeArr[i].getRole() == "Manager") {
             syntax += `
-            <h2>Manager: ${employeeArr[i].name}</h2>`
+            <h2>Manager: ${employeeArr[i].name}</h2>
+            <h3>ID: ${employeeArr[i].ID}</h3>
+            <h3>Email: ${employeeArr[i].email}</h3>
+            <h3>Office number: ${employeeArr[i].office}</h3>`
         }
     }
 
     for(i=0; i<employeeArr.length; i++)
         if(employeeArr[i].getRole() == "Engineer") {
             syntax += `
-            <h2>Engineer: ${employeeArr[i].name}</h2>`
+            <h2>Engineer: ${employeeArr[i].name}</h2>
+            <h3></h3>
+            
+            `
         }
     }
 
