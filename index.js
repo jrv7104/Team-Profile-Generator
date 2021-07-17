@@ -1,11 +1,10 @@
 //require programs
 const inquirer = require("inquirer");
-const jest = require("jest");
 const fs = require("fs")
 
 //require class systems
 const Manager = require("./lib/Manager.js");
-const Employee = require("./lib/Employee.js");
+// const Employee = require("./lib/Employee.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 
@@ -42,11 +41,6 @@ inquirer.prompt(
     employeeArr.push(manager)
     //run menu function
     mainMenu()
-
-//take answers and write to html
-// writeToFile(fileName, data);
-// console.log(answers)
-// writeToFile("index.html", answers)
 }
 );
 
@@ -127,8 +121,52 @@ function mainMenu(){
         }
     }
 })
+}
+
+function managerHTML() {
+    let syntax
+    for(i=0; i<employeeArr.length; i++) {
+    if(employeeArr[i].getRole() == "Manager") {
+        syntax += `
+        <h2>Manager: ${employeeArr[i].name}</h2>
+        <h3>ID: ${employeeArr[i].ID}</h3>
+        <h3>Email: ${employeeArr[i].email}</h3>
+        <h3>Office number: ${employeeArr[i].office}</h3>`
+    }
+}
+return syntax
+}
+
+function engineerHTML() {
+    let syntax
+    for(i=0; i<employeeArr.length; i++) {
+        if(employeeArr[i].getRole() == "Engineer") {
+            syntax += `
+            <h2>Engineer: ${employeeArr[i].name}</h2>
+            <h3>ID: ${employeeArr[i].ID}</h3>
+            <h3>Email: ${employeeArr[i].email}</h3>
+            <h3>GitHub: ${employeeArr[i].Github}</h3>`
+        }
+    }
+return syntax
+}
+
+    function internHTML() {
+        let syntax
+        for(i=0; i<employeeArr.length; i++) {
+            if(employeeArr[i].getRole() == "Intern") {
+                syntax += `
+                <h2>Intern: ${employeeArr[i].name}</h2>
+                <h3>ID: ${employeeArr[i].ID}</h3>
+                <h3>Email: ${employeeArr[i].email}</h3>
+                <h3>School: ${employeeArr[i].school}</h3>`
+            }
+        }
+        return syntax
+    }
 
 function createHTML() {
+    console.log("hi")
     let syntax = `
     <!DOCTYPE html>
     <html lang="en">
@@ -138,54 +176,14 @@ function createHTML() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile Generator</title>
     </head>
-    <body>`
+    <body>
+    ${managerHTML()}
+    ${engineerHTML()}
+    ${internHTML()}
 
-    for(i=0; i<employeeArr.length; i++)
-        if(employeeArr[i].getRole() == "Manager") {
-            syntax += `
-            <h2>Manager: ${employeeArr[i].name}</h2>
-            <h3>ID: ${employeeArr[i].ID}</h3>
-            <h3>Email: ${employeeArr[i].email}</h3>
-            <h3>Office number: ${employeeArr[i].office}</h3>`
-        }
-    }
-
-    for(i=0; i<employeeArr.length; i++)
-        if(employeeArr[i].getRole() == "Engineer") {
-            syntax += `
-            <h2>Engineer: ${employeeArr[i].name}</h2>
-            <h3>ID: ${employeeArr[i].ID}</h3>
-            <h3>Email: ${employeeArr[i].email}</h3>
-            <h3>GitHub: ${employeeArr[i].Github}</h3>`
-        }
-    }
-
-    for(i=0; i<employeeArr.length; i++) {
-        if(employeeArr[i].getRole() == "Intern") {
-            syntax += `
-            <h2>Intern: ${employeeArr[i].name}</h2>
-            <h3>ID: ${employeeArr[i].ID}</h3>
-            <h3>Email: ${employeeArr[i].email}</h3>
-            <h3>School: ${employeeArr[i].school}</h3>`
-        }
-    }
-
-    syntax =`
+    
     </body>
 </html>`
-
-    fs.writeFileSync('test.html', syntax)
-
-//create writeToFile function
-function writeToFile(filename, data) {
-    let string = generateMarkdown(data)
-    false.writeFileSync(filename, string, err => {
-        if(err) throw err;
-        })
-};
-
-//Create function to start app
-function init() {};
-
-//Function call to initialize app
-init();
+console.log(syntax)
+    fs.writeFile('test.html', syntax)
+}
