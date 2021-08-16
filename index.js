@@ -166,7 +166,6 @@ return syntax
     }
 
 function createHTML() {
-    console.log("hi")
     let managerHtml = managerHTML()
     let engineerHtml = engineerHTML()
     let internHtml = internHTML()
