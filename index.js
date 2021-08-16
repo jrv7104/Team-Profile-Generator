@@ -116,48 +116,48 @@ function mainMenu(){
                     employeeArr.push(intern)
                     return mainMenu()
         })
-        if(answer.choice == "I am done"){
-            createHTML()
-        }
+        
+    } else if(answer.choice == "I am done"){
+        createHTML()
     }
 })
 }
 
 function managerHTML() {
-    let syntax
+    let syntax = ""
     for(i=0; i<employeeArr.length; i++) {
     if(employeeArr[i].getRole() == "Manager") {
         syntax += `
         <h2>Manager: ${employeeArr[i].name}</h2>
-        <h3>ID: ${employeeArr[i].ID}</h3>
+        <h3>ID: ${employeeArr[i].id}</h3>
         <h3>Email: ${employeeArr[i].email}</h3>
-        <h3>Office number: ${employeeArr[i].office}</h3>`
+        <h3>Office number: ${employeeArr[i].officeNumber}</h3>`
     }
 }
 return syntax
 }
 
 function engineerHTML() {
-    let syntax
+    let syntax = ""
     for(i=0; i<employeeArr.length; i++) {
         if(employeeArr[i].getRole() == "Engineer") {
             syntax += `
             <h2>Engineer: ${employeeArr[i].name}</h2>
-            <h3>ID: ${employeeArr[i].ID}</h3>
+            <h3>ID: ${employeeArr[i].id}</h3>
             <h3>Email: ${employeeArr[i].email}</h3>
-            <h3>GitHub: ${employeeArr[i].Github}</h3>`
+            <h3>GitHub: ${employeeArr[i].github}</h3>`
         }
     }
 return syntax
 }
 
     function internHTML() {
-        let syntax
+        let syntax = ""
         for(i=0; i<employeeArr.length; i++) {
             if(employeeArr[i].getRole() == "Intern") {
                 syntax += `
                 <h2>Intern: ${employeeArr[i].name}</h2>
-                <h3>ID: ${employeeArr[i].ID}</h3>
+                <h3>ID: ${employeeArr[i].id}</h3>
                 <h3>Email: ${employeeArr[i].email}</h3>
                 <h3>School: ${employeeArr[i].school}</h3>`
             }
@@ -167,6 +167,9 @@ return syntax
 
 function createHTML() {
     console.log("hi")
+    let managerHtml = managerHTML()
+    let engineerHtml = engineerHTML()
+    let internHtml = internHTML()
     let syntax = `
     <!DOCTYPE html>
     <html lang="en">
@@ -177,13 +180,15 @@ function createHTML() {
         <title>Team Profile Generator</title>
     </head>
     <body>
-    ${managerHTML()}
-    ${engineerHTML()}
-    ${internHTML()}
+    ${managerHtml}
+    ${engineerHtml}
+    ${internHtml}
 
     
     </body>
 </html>`
-console.log(syntax)
-    fs.writeFile('test.html', syntax)
+// console.log(syntax)
+    fs.writeFile('test.html', syntax, err => {
+        if(err) throw err
+    })
 }
